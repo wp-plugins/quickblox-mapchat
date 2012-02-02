@@ -19,11 +19,11 @@ There is also available universal script that allows to embed MapChat to any web
 
 1. Upload plugin folder `quickblox-mapchat` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. [Go to MapChat plugin settings page and set required parameters](https://img.skitch.com/20120130-ey1kqc3bjag55exhumumwyegpb.png)
+1. Go to MapChat plugin settings page and set required parameters [screenshot](https://img.skitch.com/20120130-ey1kqc3bjag55exhumumwyegpb.png)
 1. Place `[qbmapchat width="500px" height="500px"]` in your templates
 
 == Screenshots ==
 
-1. MapChat Plugin Settings mapchat-settings-page.png
-1. Map mapchat-map.png
-1. Chat mapchat-chat.png
+1. mapchat-settings-page.png
+1. mapchat-map.png
+1. mapchat-chat.png
