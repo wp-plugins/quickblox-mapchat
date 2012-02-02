@@ -24,6 +24,6 @@ There is also available universal script that allows to embed MapChat to any web
 
 == Screenshots ==
 
-1. mapchat-settings-page.png
-1. mapchat-map.png
-1. mapchat-chat.png
+1. MapChat Setting Page
+1. Map
+1. Chat
