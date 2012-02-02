@@ -24,6 +24,7 @@ There is also available universal script that allows to embed MapChat to any web
 
 == Screenshots ==
 
-1. MapChat Setting Page
-1. Map
-1. Chat
+1. MapChat Settings Page
+1. Map Tab
+1. Chat Tab
+1. MapChat placed in sidebar using WordPress widgets mechanism
