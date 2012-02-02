@@ -9,13 +9,13 @@ Use MapChat. Be social. Be visual.
 
 == Description ==
 
-QuickBlox MapChat is simple plugin for WordPress, that fast adds MapChat (chat integrated with map) to your website and powers it with great functions.
+QuickBlox MapChat is a simple plugin for WordPress, that adds a MapChat (chat integrated with map) widget to your website. You can chat over a map or in chat room.
 
-[QuickBlox](http://quickblox.com) is ready-to-go modules add new functionality, reduce development time & cost, add scalability, and quicken time to market. QuickBlox powers your apps with great functions and features that are easy to add during development.
+Plugins Official Website: [http://quickblox.com/](http://quickblox.com/)
 
-= Universal MapChat Widget =
+You can use the [universal script](http://quickblox.com/apps/mapchat/) to embed this widget on any website. 
 
-There is also available universal script that allows to embed MapChat to any website — http://quickblox.com/apps/mapchat/
+Build your own widgets using our ready to go modules for web and mobile with QuickBlox. QuickBlox provides ready-to-go modules to add new functionality to your mobile and web apps. QuickBlox powers your apps with great functions and features that are easy to add during development and to quicken it.
 
 == Installation ==
 
