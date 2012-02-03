@@ -9,6 +9,11 @@ Author URI: http://quickblox.com
 License: License
 */
 
+$website_domain = '1';
+if ($_SERVER['HTTP_HOST']) {
+	$website_domain = $_SERVER['HTTP_HOST'];
+}
+
 add_action('admin_menu', 'qb_create_menu');
 
 function qb_create_menu() {
@@ -37,7 +42,7 @@ function qb_settings_form() {
 	
 	if ($_GET['settings-updated'] == true) {
 		
-		$params = "app_domain=1&app_id=$appId&owner_id=$ownerId&auth_key=$authKey&auth_secret=$authSecret&param_response=1";
+		$params = "app_domain=$website_domain&app_id=$appId&owner_id=$ownerId&auth_key=$authKey&auth_secret=$authSecret&param_response=1";
 		
 		$resKey = POSTRequest('http://quickblox.com/apps/mapchat/code.php', $params, true);
 
