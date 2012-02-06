@@ -17,6 +17,8 @@ You can use the [universal script](http://quickblox.com/apps/mapchat/) to embed 
 
 Build your own widgets using our ready to go modules for web and mobile with QuickBlox. QuickBlox provides ready-to-go modules to add new functionality to your mobile and web apps. QuickBlox powers your apps with great functions and features that are easy to add during development and to quicken it.
 
+Support: you can ask your questions and discuss plugin in the [community](http://community.quickblox.com/quickblox/).
+
 == Installation ==
 
 1. Upload plugin folder `quickblox-mapchat` to the `/wp-content/plugins/` directory
