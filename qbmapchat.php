@@ -3,7 +3,7 @@
 Plugin Name: QuickBlox MapChat
 Plugin URI: http://quickblox.com/apps/mapchat
 Description: QuickBlox MapChat is simple plugin for Wordpress, that fast adds MapChat (chat integrated with map) to your website and powers it with great functions and features of communication.
-Version: 0.2
+Version: 0.3
 Author: QuickBlox Team
 Author URI: http://quickblox.com
 License: License
@@ -11,19 +11,49 @@ License: License
 
 add_action('admin_menu', 'qb_create_menu');
 
+add_action('init', 'register_qb_mapchat_widget');
+
+add_shortcode( 'qbmapchat', 'qb_shortcode_handler' );
+
+// add_action( 'activate_qbmapchat', 'init_defaults' );
+register_activation_hook( __FILE__, 'init_defaults' );
+
+function init_defaults() {
+	$defaults['appId'] = '205';
+	$defaults['ownerId'] = '4363';
+	$defaults['authKey'] = 'OSw5MhZg49QgENs';
+	$defaults['authSecret'] = 'BUEucw9PyOn8WKq';
+	
+	if (get_option('qb_app_id') == '') {
+		update_option('qb_app_id', $defaults['appId']);	
+	}
+	if (get_option('qb_owner_id') == '') {
+		update_option('qb_owner_id', $defaults['ownerId']);	
+	}
+	if (get_option('qb_auth_key') == '') {
+		update_option('qb_auth_key', $defaults['authKey']);	
+	}
+	if (get_option('qb_auth_secret') == '') {
+		update_option('qb_auth_secret', $defaults['authSecret']);	
+	}
+	
+	add_option('qb_activated', 1);
+	update_option('qb_activated', 1);
+}
+
 function qb_create_menu() {
 	add_menu_page('QB MapChat Settings', 'QB MapChat', 'administrator', __FILE__, 'qb_settings_form', plugins_url('favicon.ico', __FILE__));
 	add_action( 'admin_init', 'register_mysettings' );
 }
 
 function register_mysettings() {
-	register_setting( 'qb-settings-group', 'qb_app_id' );
-	register_setting( 'qb-settings-group', 'qb_owner_id' );
-	register_setting( 'qb-settings-group', 'qb_auth_key' );
-	register_setting( 'qb-settings-group', 'qb_auth_secret' );
-	register_setting( 'qb-settings-group', 'qb_widget_title' );
-	register_setting( 'qb-settings-group', 'qb_widget_height' );
-	register_setting( 'qb-settings-group', 'qb_widget_width' );
+	register_setting('qb-settings-group', 'qb_app_id');
+	register_setting('qb-settings-group', 'qb_owner_id');
+	register_setting('qb-settings-group', 'qb_auth_key');
+	register_setting('qb-settings-group', 'qb_auth_secret');
+	register_setting('qb-settings-group', 'qb_widget_title');
+	register_setting('qb-settings-group', 'qb_widget_height');
+	register_setting('qb-settings-group', 'qb_widget_width');
 }
 
 function qb_settings_form() {
@@ -35,7 +65,11 @@ function qb_settings_form() {
 	$authKey =  get_option('qb_auth_key');
 	$authSecret =  get_option('qb_auth_secret'); 
 	
-	if ($_GET['settings-updated'] == true) {
+	$activated = get_option('qb_activated');
+	
+	if ($_GET['settings-updated'] == true || $activated) {
+		//add_option('qb_activated', 1);
+		update_option('qb_activated', 0);
 
 		$website_domain = '1';
 		if ($_SERVER['HTTP_HOST']) {
@@ -77,6 +111,7 @@ function qb_settings_form() {
 	    <p>You can simply get <a href="https://img.skitch.com/20120123-8iqh4qh3ftqjamu1mhfjhnrcx6.png">application parameters</a> after you register your QuickBlox account and add application.</p>
 		<p>You should just register, log in, and get parameters of your appliction. More detailed information look at <a href="http://wiki.quickblox.com/5_Minute_Guide">5 minute QuickBlox guide</a> (first three points).</p>
 	    <h3 class="title">Chat Settings</h3>
+	    <p><strong>Attention</strong>: if you <em>first run</em> plugin, know that default settings below belong to demo account. To setup your own MapChat, please, register QuickBlox account and put application settings to fields below.</p>
 	    <form method="post" action="options.php">
 		    <?php settings_fields( 'qb-settings-group' ); ?>
 			<table class="form-table">
@@ -122,10 +157,6 @@ function qb_settings_form() {
 <?php 
 } 
 
-function hello_world($title) {
-    echo $title.' -> '.get_option('qb_widget_title');
-}
-
 function qb_mapchat_widget($args) {
     extract($args);
     
@@ -140,10 +171,6 @@ function qb_mapchat_widget($args) {
 function register_qb_mapchat_widget() {
     register_sidebar_widget('QB MapChat', 'qb_mapchat_widget');
 }
-
-add_action('init', 'register_qb_mapchat_widget');
-
-add_shortcode( 'qbmapchat', 'qb_shortcode_handler' );
 
 function get_mapchat_code($h, $w) {
 	$key = get_option('qb_key');
