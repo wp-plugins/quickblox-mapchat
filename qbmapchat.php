@@ -3,7 +3,7 @@
 Plugin Name: QuickBlox MapChat
 Plugin URI: http://quickblox.com/apps/mapchat
 Description: QuickBlox MapChat is simple plugin for Wordpress, that fast adds MapChat (chat integrated with map) to your website and powers it with great functions and features of communication.
-Version: 0.3
+Version: 1.0
 Author: QuickBlox Team
 Author URI: http://quickblox.com
 License: License
