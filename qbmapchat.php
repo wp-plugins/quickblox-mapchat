@@ -108,10 +108,17 @@ function qb_settings_form() {
     
     <div class="wrap">
 	    <h2>QuickBlox MapChat Settings</h2>
-	    <p>You can simply get <a href="https://img.skitch.com/20120123-8iqh4qh3ftqjamu1mhfjhnrcx6.png">application parameters</a> after you register your QuickBlox account and add application.</p>
-		<p>You should just register, log in, and get parameters of your appliction. More detailed information look at <a href="http://wiki.quickblox.com/5_Minute_Guide">5 minute QuickBlox guide</a> (first three points).</p>
+		
+		<p>To create your own cloud hosted MapChat instance:</p>
+		<ol>
+			<li>Register your QuickBlox account;</li>
+			<li>Create an application;</li>
+			<li>Copy&Paste <a href="https://img.skitch.com/20120123-8iqh4qh3ftqjamu1mhfjhnrcx6.png">application parameters</a>.</li>
+		</ol> 
+		<p>Any difficulties &mdash; check out the <a href="http://wiki.quickblox.com/5_Minute_Guide">5 minute guide</a> or submit your issue to our <a href="http://community.quickblox.com/quickblox/products/quickblox_wordpress_widget_mapchat">support community</a>.</p>		
+		
 	    <h3 class="title">Chat Settings</h3>
-	    <p><strong>Attention</strong>: if you <em>first run</em> plugin, know that default settings below belong to demo account. To setup your own MapChat, please, register QuickBlox account and put application settings to fields below.</p>
+	    <p><strong>Attention</strong>: when you <em>first run</em> the plugin, the default settings are for the demo account. To setup your own MapChat, please register for your own QuickBlox account and put your application settings in the fields below.</p>
 	    <form method="post" action="options.php">
 		    <?php settings_fields( 'qb-settings-group' ); ?>
 			<table class="form-table">
