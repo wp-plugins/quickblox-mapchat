@@ -56,6 +56,17 @@ function register_mysettings() {
 	register_setting('qb-settings-group', 'qb_widget_width');
 }
 
+function getRealIpAddr() {
+	if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+		$ip=$_SERVER['HTTP_CLIENT_IP'];
+	} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+    	$ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
+	} else {
+    	$ip=$_SERVER['REMOTE_ADDR'];
+	}
+	return $ip;
+}	
+
 function qb_settings_form() {
 	$errorMessage = '<div id="message" class="error"><p><strong>There is no QuickBlox application with specified parameters. Check parameters (application id, owner id, auth key and auth secret), please.</strong></p></div>';
 	$emptyFieldsMessage = '<div id="message" class="updated"><p><strong>Just fill fields below to get MapChat widget in your website pages.</strong></p></div>';
@@ -76,7 +87,9 @@ function qb_settings_form() {
 			$website_domain = $_SERVER['HTTP_HOST'];
 		}
 		
-		$params = "app_domain=$website_domain&app_id=$appId&owner_id=$ownerId&auth_key=$authKey&auth_secret=$authSecret&param_response=1";
+		$website_ip = getRealIpAddr();
+		
+		$params = "app_domain=$website_domain&app_id=$appId&owner_id=$ownerId&auth_key=$authKey&auth_secret=$authSecret&param_response=1&ip=$website_ip";
 		
 		$resKey = POSTRequest('http://quickblox.com/apps/mapchat/code.php', $params, true);
 
