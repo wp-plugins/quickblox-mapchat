@@ -15,7 +15,7 @@ Plugins Official Website: [http://quickblox.com/apps/mapchat/](http://quickblox.
 
 Plugin doesn't work for some reason? Use [Map Chat HTML code generator](http://quickblox.com/apps/mapchat/). It is universal and works with any website / web app. 
 
-Cross-platform feature: QuickBlox allows your web visitors communicate with your mobile app users. If you have an iOS/Android/WP7 app or want to build one, download MapChat code mashups from [http://quickblox.com/developers/samples/](http://quickblox.com/developers/samples/) put same app ID as you have in your WordPress widget and enjoy your user base united.
+Cross-platform feature: [QuickBlox](http://quickblox.com/) allows your web visitors communicate with your mobile app users. If you have an iOS/Android/WP7 app or want to build one, download MapChat code mashups from [http://quickblox.com/developers/samples/](http://quickblox.com/developers/samples/) put same app ID as you have in your WordPress widget and enjoy your user base united.
 
 Support: you can ask your questions and discuss plugin in the [community](http://community.quickblox.com/quickblox/).
 
