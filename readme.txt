@@ -23,6 +23,10 @@ Any difficulties — check out the [5 minute guide](5 minute guide) or submit yo
 
 1. Upload plugin folder `quickblox-mapchat` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
+1. [Create QuickBlox account](https://admin.quickblox.com/register)
+1. [Login to admin panel](http://admin.quickblox.com/signin)
+1. Add new application ([screenshot](http://qblx.co/wqbG7x))
+1. Get application parameters ([screenshot](http://qblx.co/ACrGqz))
 1. Go to MapChat plugin settings page and set required parameters ([screenshot](https://img.skitch.com/20120130-ey1kqc3bjag55exhumumwyegpb.png))
 1. Place `[qbmapchat width="500px" height="500px"]` in your templates
 
