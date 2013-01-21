@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: QuickBlox MapChat
-Plugin URI: http://quickblox.com/apps/mapchat
+Plugin URI: http://quickblox.com/applications/mapchat
 Description: QuickBlox MapChat is simple plugin for Wordpress, that fast adds MapChat (chat integrated with map) to your website and powers it with great functions and features of communication.
-Version: 0.5
+Version: 0.6
 Author: QuickBlox Team
 Author URI: http://quickblox.com
 License: License
@@ -20,16 +20,16 @@ register_activation_hook( __FILE__, 'init_defaults' );
 
 function init_defaults() {
 	$defaults['appId'] = '208';
-	$defaults['ownerId'] = '4434';
+	//$defaults['ownerId'] = '4434';
 	$defaults['authKey'] = 'DLuug-5VNjNTGsV';
 	$defaults['authSecret'] = 'F7mWg3f2X2WM-hk';
 	
 	if (get_option('qb_app_id') == '') {
 		update_option('qb_app_id', $defaults['appId']);	
 	}
-	if (get_option('qb_owner_id') == '') {
+	/*if (get_option('qb_owner_id') == '') {
 		update_option('qb_owner_id', $defaults['ownerId']);	
-	}
+	}*/
 	if (get_option('qb_auth_key') == '') {
 		update_option('qb_auth_key', $defaults['authKey']);	
 	}
@@ -48,7 +48,7 @@ function qb_create_menu() {
 
 function register_mysettings() {
 	register_setting('qb-settings-group', 'qb_app_id');
-	register_setting('qb-settings-group', 'qb_owner_id');
+	//register_setting('qb-settings-group', 'qb_owner_id');
 	register_setting('qb-settings-group', 'qb_auth_key');
 	register_setting('qb-settings-group', 'qb_auth_secret');
 	register_setting('qb-settings-group', 'qb_widget_title');
@@ -68,11 +68,11 @@ function getRealIpAddr() {
 }	
 
 function qb_settings_form() {
-	$errorMessage = '<div id="message" class="error"><p><strong>There is no QuickBlox application with specified parameters. Check parameters (application id, owner id, auth key and auth secret), please.</strong></p></div>';
+	$errorMessage = '<div id="message" class="error"><p><strong>There is no QuickBlox application with specified parameters. Check parameters (application id, auth key and auth secret), please.</strong></p></div>';
 	$emptyFieldsMessage = '<div id="message" class="updated"><p><strong>Just fill fields below to get MapChat widget in your website pages.</strong></p></div>';
 
 	$appId =  get_option('qb_app_id');
-	$ownerId =  get_option('qb_owner_id');
+	//$ownerId =  get_option('qb_owner_id');
 	$authKey =  get_option('qb_auth_key');
 	$authSecret =  get_option('qb_auth_secret'); 
 	
@@ -89,9 +89,9 @@ function qb_settings_form() {
 		
 		$website_ip = getRealIpAddr();
 		
-		$params = "app_domain=$website_domain&app_id=$appId&owner_id=$ownerId&auth_key=$authKey&auth_secret=$authSecret&param_response=1&ip=$website_ip";
+		$params = "app_domain=$website_domain&app_id=$appId&auth_key=$authKey&auth_secret=$authSecret&param_response=1&ip=$website_ip";
 		
-		$resKey = POSTRequest('http://quickblox.com/apps/mapchat/code.php', $params, true);
+		$resKey = POSTRequest('http://quickblox.com/applications/mapchat/code.php', $params, true);
 
 		if (strlen($resKey) == 0) {
 			$resKey = '0';
@@ -110,7 +110,7 @@ function qb_settings_form() {
 	
 	$optKey = get_option('qb_key');
 
-	if (!$appId && !$ownerId && !$authKey && !$authSecret) {
+	if (!$appId && /*!$ownerId &&*/ !$authKey && !$authSecret) {
 		echo $emptyFieldsMessage;
 	} else 
 		if ($optKey == '0') {
@@ -126,9 +126,9 @@ function qb_settings_form() {
 		<ol>
 			<li>Register your QuickBlox account;</li>
 			<li>Create an application;</li>
-			<li>Copy&Paste <a href="https://img.skitch.com/20120123-8iqh4qh3ftqjamu1mhfjhnrcx6.png">application parameters</a>.</li>
+			<li>Copy&Paste <a href="http://i.imgur.com/PXfiX97.png">application parameters</a>.</li>
 		</ol> 
-		<p>Any difficulties &mdash; check out the <a href="http://wiki.quickblox.com/5_Minute_Guide">5 minute guide</a> or submit your issue to our <a href="http://community.quickblox.com/quickblox/products/quickblox_wordpress_widget_mapchat">support community</a>.</p>		
+		<p>Any difficulties &mdash; check out the <a href="http://quickblox.com/developers/5_Minute_Guide">5 minute guide</a> or submit your issue to our <a href="http://community.quickblox.com/quickblox/products/quickblox_wordpress_widget_mapchat">support community</a>.</p>		
 		
 	    <h3 class="title">Chat Settings</h3>
 	    <p><strong>Attention</strong>: when you <em>first run</em> the plugin, the default settings are for the demo account. To setup your own MapChat, please register for your own QuickBlox account and put your application settings in the fields below.</p>
@@ -139,11 +139,11 @@ function qb_settings_form() {
 				<th scope="row"><label for="qb_app_id">Application id</label></th>
 				<td><input name="qb_app_id" type="text" id="qb_app_id" class="regular-text code" placeholder="e.g. 123" value="<?php echo get_option('qb_app_id') ?>"></td>
 				</tr>
-				<tr valign="top">
+				<!--<tr valign="top">
 				<th scope="row"><label for="qb_owner_id">Account owner id</label></th>
-				<td><input name="qb_owner_id" type="text" id="qb_owner_id" class="regular-text code" placeholder="e.g. 456" value="<?php echo get_option('qb_owner_id') ?>">
+				<td><input name="qb_owner_id" type="text" id="qb_owner_id" class="regular-text code" placeholder="e.g. 456" value="<?php //echo get_option('qb_owner_id') ?>">
 				<span class="description"></span></td>
-				</tr>
+				</tr>-->
 				<tr valign="top">
 				<th scope="row"><label for="qb_auth_key">Authorization key</label></th>
 				<td><input name="qb_auth_key" type="text" id="qb_auth_key" class="regular-text code" placeholder="e.g. WOuFKaCjtfksRnF" value="<?php echo get_option('qb_auth_key') ?>"></td>
@@ -205,7 +205,7 @@ function get_mapchat_code($h, $w) {
 		$style = " style='width:$w; height:$h;'";
 	}
 	
-	return "<div id='qb-mapchat'$style><div id='qb-powered-by-quickblox' style='font:11px/18px Arial, Helvetica, sans-serif !important; height:18px !important; position:relative !important; margin-bottom:-18px !important; padding-right:5px !important; text-align:right !important; margin-left:130px !important;'>Powered by <a href='http://quickblox.com' style='color:#3B5998 !important; text-decoration:none !important;'>QuickBlox</a></div><iframe src='http://quickblox.com/apps/mapchat/app.php?key=$key' frameborder=0 height=100% width=100%></iframe></div>";
+	return "<div id='qb-mapchat'$style><div id='qb-powered-by-quickblox' style='font:11px/18px Arial, Helvetica, sans-serif !important; height:18px !important; position:relative !important; margin-bottom:-18px !important; padding-right:5px !important; text-align:right !important; margin-left:130px !important;'>Powered by <a href='http://quickblox.com' style='color:#3B5998 !important; text-decoration:none !important;'>QuickBlox</a></div><iframe src='http://quickblox.com/applications/mapchat/app.php?key=$key' frameborder=0 height=100% width=100%></iframe></div>";
 }
 
 function get_widget_code() {
